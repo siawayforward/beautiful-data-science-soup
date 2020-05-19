@@ -1,0 +1,18 @@
+section 1: class = results__list
+section 2: class = results__detail-view
+
+all the results:
+list item(li): class = result-card job-result-card result_card--with-hover-state
+what to use: data-id data-search-id data-tracking-id
+
+step 1: get the id to get the details for
+step 2: get details by id
+
+1. Job title:
+2. Company:
+3. Location:
+4. Skills needed: in details div, compare to your dictionary
+5. details: div, class = show-more-less-html__markup
+6. Posted date: in the details div, strong = "Posted Date:"
+7. Visa sponsorship? (yes/no/na)*
+8. Relocation assistance? (yes/no/na)*
