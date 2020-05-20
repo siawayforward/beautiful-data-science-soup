@@ -1,9 +1,8 @@
-section 1: class = results__list
-section 2: class = results__detail-view
+section 1: class = results__list -done!!
+section 2: class = results__detail-view using href
 
-all the results:
-list item(li): class = result-card job-result-card result_card--with-hover-state
-what to use: data-id data-search-id data-tracking-id
+example link to inspect
+https://www.linkedin.com/jobs/view/atg-developer-at-caspex-1831583854/?refId=c1da6d94-3cea-49ce-9110-906cc47e3c55&position=13&pageNum=0&trk=public_jobs_job-result-card_result-card_full-click
 
 step 1: get the id to get the details for
 step 2: get details by id
