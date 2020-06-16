@@ -1,0 +1,24 @@
+section 1: get the list of results -done!!
+section 2: detail view of results using href
+
+example link to inspect
+https://www.linkedin.com/jobs/view/atg-developer-at-caspex-1831583854/?refId=c1da6d94-3cea-49ce-9110-906cc47e3c55&position=13&pageNum=0&trk=public_jobs_job-result-card_result-card_full-click
+- class = description__text description__text--rich for desc; find all 'p'
+desc will include skills, years of qualifications, relo/visa details
+
+Company info:
+- class = topcard__content-left
+- Job: h1, class = topcard__title
+- Company: h3, 'a' with class = topcard_org-name-link topcard__flavor--black-link
+- Location: h3, 'span' with class = topcard__flavor topcard__flavor--bullet
+	::before 
+<a class="topcard__org-name-link topcard__flavor--black-link" target="_blank" rel="noopener" href="https://in.linkedin.com/company/flipkart?trk=public_jobs_topcard_org_name" data-tracking-control-name="public_jobs_topcard_org_name" data-tracking-will-navigate="">Flipkart</a>
+- Posted date/time
+<span class="topcard__flavor--metadata posted-time-ago__text posted-time-ago__text--new">9 hours ago</span>
+1. Job title:
+2. Company:
+3. Location:
+4. Skills needed: in details div, compare to your dictionary
+6. Posted date: in the details div
+7. Visa sponsorship? (yes/no/na)*
+8. Relocation assistance? (yes/no/na)*
