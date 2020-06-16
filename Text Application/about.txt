@@ -1,8 +1,0 @@
-Personal project
-==================
-Completed in order to learn how to use Python for text application development. Details about the application are found in the report. Thanks, Dr. Hu!
-
-Three notebooks. 
-- One for classes
-- One for DAO classes
-- One to run the application
