@@ -4,3 +4,5 @@ Training Postings.xlsx
 data-today.csv
 Locations.txt
 webdata.txt
+__pycache__
+.ipynb_checkpoints
