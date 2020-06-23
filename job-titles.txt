@@ -1,14 +1,10 @@
 Data Scientist
 Data Analyst
-BI Developer
+Developer
 Decision Science Analyst
-Applied Scientist
-Modeling Analyst
 Business Intelligence Analyst
-Business Intelligence Developer
 Quantitative Analyst
 Analytics Associate
 Software Development Engineer
-Data Science Analyst
 Machine Learning Engineer
 Decision Scientist
