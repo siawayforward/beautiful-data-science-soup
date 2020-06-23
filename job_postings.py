@@ -56,7 +56,7 @@ class Posting:
             
             
 #class to find, filter, and process job postings
-class New_Postings():
+class New_Postings:
     #jobs to search
     job_titles = pd.read_csv('titles.txt', header=None)[0].values.tolist()
     
@@ -98,7 +98,7 @@ class New_Postings():
         return self.links
     
     #method to check whether title is valid for entry, associate, internship level, non-government job
-    def filter_title_and_location(self, job): #true is the thing we want to keep
+    def filter_title_and_location(self, job, filters): #true is the thing we want to keep
         filters = ['VP', 'manager', 'senior', 'sr', 'president', 'vice president', 'director']
         #check if title has senior tags/location is Virginia = government jobs/need clearance+residence
         try:
@@ -128,7 +128,7 @@ class New_Postings():
     
     
 #class to preprocess the description and get target description for feature extraction
-class Description_Features():    
+class Description_Features:    
     #tags to filter description with for immigration
     immigration_tags = ['security', 'clearance', 'citizens', 'citizen', 'H1B', 'U.S.','C2C', 'W2',
                              'authorized', 'authorization', 'sponsorship', 'visa',  'citizen',  
