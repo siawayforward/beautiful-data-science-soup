@@ -58,10 +58,10 @@ class Posting:
 #class to find, filter, and process job postings
 class New_Postings:
     #jobs to search
-    job_titles = pd.read_csv('titles.txt', header=None)[0].values.tolist()
+    job_titles = pd.read_csv('job-titles.txt', header=None)[0].values.tolist()
     
     def __init__(self):
-        self.today = datetime.now().strftime('%a, %B %d, %Y')
+        self.today = datetime.now().strftime('%a %B %d, %Y')
         self.daily = '1'
         self.weekly = '1%2C2'
         self.links = self.get_all_location_results()
@@ -82,7 +82,7 @@ class New_Postings:
                 'location': p.job_location}) #might change letter
         data = pd.DataFrame(jobs)
         data.sort_values(by='company')
-        data.to_excel('Job Postings -' + self.today)
+        data.to_excel('Job Postings -' + self.today+'.xlsx')
         print('File exported!')
         
     #method to get search results for dictionary positions and all locations before filtering
@@ -90,7 +90,7 @@ class New_Postings:
     def get_all_location_results(self, location = 'United States'): 
         end = len(self.job_titles)
         self.links = []
-        print(end, 'search terms: \n--------------------------------\n')
+        print(end, 'search terms: \n--------------------------------')
         period = self.daily
         if self.today[0:3] == 'Sun': period = self.weekly
         for title in self.job_titles:
@@ -104,7 +104,7 @@ class New_Postings:
         return self.links
     
     #method to check whether title is valid for entry, associate, internship level, non-government job
-    def filter_title_and_location(self, job, filters): #true is the thing we want to keep
+    def filter_title_and_location(self, job): #true is the thing we want to keep
         filters = ['VP', 'manager', 'senior', 'sr', 'president', 'vice president', 'director']
         #check if title has senior tags/location is Virginia = government jobs/need clearance+residence
         try:
