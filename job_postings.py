@@ -121,8 +121,3 @@ class New_Postings:
 def print_time(note, t):
     print(note, '{m}:{s:02d} mins'\
           .format(m = round((time() - t )/ 60), s = round((time()-t)%60)))
-
-
-if __name__ == '__main__':
-    #initiate search and return data table
-    
