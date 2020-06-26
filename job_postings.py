@@ -82,7 +82,7 @@ class New_Postings:
                 'location': p.job_location}) #might change letter
         data = pd.DataFrame(jobs)
         data.sort_values(by='company')
-        data.to_excel('Job Postings -' + self.today+'.xlsx')
+        data.to_excel('Job Postings - ' + self.today+'.xlsx')
         print('File exported!')
         
     #method to get search results for dictionary positions and all locations before filtering
