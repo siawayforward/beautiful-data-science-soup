@@ -1,4 +1,3 @@
-
 #needed modules
 import pandas as pd
 import numpy as np
@@ -7,6 +6,7 @@ import requests
 import wordninja
 import nltk
 import string
+import job_description
 from bs4 import BeautifulSoup as bs
 from collections import defaultdict
 from datetime import datetime, timedelta
@@ -74,14 +74,8 @@ class New_Postings:
         self.postings = list(filter(self.filter_title_and_location, self.postings))
         
     def save_job_postings(self):
-        jobs = []
-        for p in self.postings:
-            jobs.append({'link': p.job_link,
-                'title': p.job_title, 
-                'company': p.company_name, 
-                'location': p.job_location}) #might change letter
-        data = pd.DataFrame(jobs)
-        data.sort_values(by='company')
+        data = self.get_job_postings()
+        data.sort_values(by='decision', ascending=False)
         data.to_excel('Job Postings - ' + self.today+'.xlsx')
         print('File exported!')
         
@@ -113,6 +107,23 @@ class New_Postings:
             if job.job_location.upper().find(', VA') != -1: return False
             else: return True
         except: pass
+
+    #to use later - method to get immigration decision
+    #method to return the processed job postings as a dataframe
+    def get_job_postings(self):
+        #filter out non-qualified jobs
+        print('Total remaining job postings:', len(self.postings))
+        companies = job_description.get_H1B_approvers()
+        jobs = []
+        for p in self.postings:
+            val = job_description.Description_Features(p.description)
+            jobs.append({'title': p.job_title, 'company': p.company_name, 
+                            'location': p.job_location, 'desc_raw': p.description,
+                        'desc_visa': val.clean_description_text(),
+                        'sponsor':val.get_immigration_stance(p.company_name, companies),
+                        'decision': val.check_description_markers(5)}) #might change letter
+        job_data = pd.DataFrame(jobs)
+        return job_data
   
     
 
