@@ -28,8 +28,6 @@ A web scrapper that uses beautiful soup to scrape LinkedIn job postings for data
 - Mail to an email list every day
 - Correct excel hyperlinks
 
-```html
-<span style="color:red">**Known Issues:**</span>
-```
+**Known Issues:**
 
 Some job links have issues so the HYPERLINK excel function does not work when the file is opened. You might get a prompt asking if you want to keep some sources that are harmful. This means there is a broken link. Press 'yes' and proceed for now. There will not be links on those particular items. This is being fixed currently.
