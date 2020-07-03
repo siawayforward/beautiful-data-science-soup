@@ -24,3 +24,4 @@ A web scrapper that uses beautiful soup to scrape LinkedIn job postings for data
 - Modeling the tfidf vectors from the filtered descriptions
 - Checking for years of experience phrases to filter out junior or entry level positions
 - Customizing location within the U.S. (but COVID-19 is here so we can't be too picky right now!)
+- Mail to an email list every day
