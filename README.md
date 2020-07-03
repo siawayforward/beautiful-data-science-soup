@@ -18,6 +18,7 @@ A web scrapper that uses beautiful soup to scrape LinkedIn job postings for data
 - The program takes between 3 and 5 minutes to run. This is an ongoing inefficiency that will be fixed; currently learning how to use scrapy to replace with for faster computation
 - Excel file will include positions sorted by 'yes' -> 'unknown' -> 'no' sponsorship or assistance so that those needed are seen first. The first check showed only 65-70% accuracy in prediction without a model.
 - ***Also note***, positions labeled as *unknown* may be from companies that are not clear enough in the description (e.g. no mention of E-verify or visas, but also no denials), OR an inaccurate conclusion.
+- When you open the excel file, click on the job title to navigate to the job link. There are some links with issues. This is addressed below.
 
 **Ongoing Improvements:**
 
@@ -25,3 +26,8 @@ A web scrapper that uses beautiful soup to scrape LinkedIn job postings for data
 - Checking for years of experience phrases to filter out junior or entry level positions
 - Customizing location within the U.S. (but COVID-19 is here so we can't be too picky right now!)
 - Mail to an email list every day
+- Correct excel hyperlinks
+
+<span style="color:red">some **Known Issues** </span>
+
+Some job links have issues so the HYPERLINK excel function does not work when the file is opened. You might get a prompt asking if you want to keep some sources that are harmful. This means there is a broken link. Press 'yes' and proceed for now. There will not be links on those particular items. This is being fixed currently.
