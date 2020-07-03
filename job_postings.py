@@ -61,7 +61,7 @@ class New_Postings:
     job_titles = pd.read_csv('job-titles.txt', header=None)[0].values.tolist()
     
     def __init__(self):
-        self.today = datetime.now().strftime('%a %B %d, %Y')
+        self.date = datetime.now()
         self.daily = '1'
         self.weekly = '1%2C2'
         self.links = self.get_all_location_results()
@@ -75,8 +75,10 @@ class New_Postings:
         
     def save_job_postings(self):
         data = self.get_job_postings()
-        data.sort_values(by='decision', ascending=False)
-        data.to_excel('Job Postings - ' + self.today+'.xlsx')
+        del data['desc_visa'] #remove processed description
+        data.sort_values(by=['decision'], inplace=True, ascending=False)
+        data = data.reset_index(drop=True)
+        data.to_excel('Job Postings -' + self.date.strftime('%Y-%m-%d')+'.xlsx')
         print('File exported!')
         
     #method to get search results for dictionary positions and all locations before filtering
@@ -86,7 +88,7 @@ class New_Postings:
         self.links = []
         print(end, 'search terms: \n--------------------------------')
         period = self.daily
-        if self.today[0:3] == 'Sun': period = self.weekly
+        if self.date.strftime('%a') == 'Sun': period = self.weekly
         for title in self.job_titles:
             URL = 'https://www.linkedin.com/jobs/search?keywords='+ title + '&location='\
             + location + '&f_TP=' + period 
@@ -94,7 +96,7 @@ class New_Postings:
             soup = bs(page.content, 'lxml')
             refs = soup.find_all('a', class_='result-card__full-card-link')
             self.links += [ref.get('href') for ref in refs if ref.get('href') not in self.links]
-        print(location + ':', len(self.links), 'result links for', self.today)
+        print(location + ':', len(self.links), 'result links for', self.date.strftime('%a %B %d, %Y'))
         return self.links
     
     #method to check whether title is valid for entry, associate, internship level, non-government job

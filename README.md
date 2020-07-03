@@ -15,7 +15,7 @@ A web scrapper that uses beautiful soup to scrape LinkedIn job postings for data
 - Download and save `job_postings.py`, `job_description.py`, `job_titles.txt`, and the `main.py` file to the same directory
 - Run `main.py`. Process will display on terminal, and once completed, an excel file will be saved to the same directory where the other scripts are located.
 - **Note:** Since the job titles file is not hard-coded, you can change the search titles to match another set of positions of interest/industry
-- The program takes between 4 and 5 minutes to run. This is an ongoing inefficiency that will be fixed; currently learning how to use scrapy to replace with for faster computation
+- The program takes between 3 and 5 minutes to run. This is an ongoing inefficiency that will be fixed; currently learning how to use scrapy to replace with for faster computation
 - Excel file will include positions sorted by 'yes' -> 'unknown' -> 'no' sponsorship or assistance so that those needed are seen first. The first check showed only 65-70% accuracy in prediction without a model.
 - ***Also note***, positions labeled as *unknown* may be from companies that are not clear enough in the description (e.g. no mention of E-verify or visas, but also no denials), OR an inaccurate conclusion.
 
