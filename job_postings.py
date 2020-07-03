@@ -78,7 +78,7 @@ class New_Postings:
         del data['desc_visa'] #remove processed description
         data.sort_values(by=['decision'], inplace=True, ascending=False)
         data = data.reset_index(drop=True)
-        data.to_excel('Job Postings -' + self.date.strftime('%Y-%m-%d')+'.xlsx')
+        data.to_excel('Job Postings-' + self.date.strftime('%Y-%m-%d')+'.xlsx')
         print('File exported!')
         
     #method to get search results for dictionary positions and all locations before filtering
@@ -119,11 +119,11 @@ class New_Postings:
         jobs = []
         for p in self.postings:
             val = job_description.Description_Features(p.description)
-            jobs.append({'title': p.job_title, 'company': p.company_name, 
-                            'location': p.job_location, 'desc_raw': p.description,
-                        'desc_visa': val.clean_description_text(),
-                        'sponsor':val.get_immigration_stance(p.company_name, companies),
-                        'decision': val.check_description_markers(5)}) #might change letter
+            jobs.append({'title': '=HYPERLINK("{}", "{}")'.format(p.job_link, p.job_title),
+            'company': p.company_name, 'location': p.job_location, 'desc_raw': p.description,
+            'desc_visa': val.clean_description_text(),
+            'sponsor':val.get_immigration_stance(p.company_name, companies),
+            'decision': val.check_description_markers(5)}) #might change later
         job_data = pd.DataFrame(jobs)
         return job_data
   
