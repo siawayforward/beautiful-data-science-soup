@@ -78,7 +78,7 @@ class New_Postings:
         del data['desc_visa'] #remove processed description
         data.sort_values(by=['decision'], inplace=True, ascending=False)
         data = data.reset_index(drop=True)
-        data.to_excel('Job Postings-' + self.date.strftime('%Y-%m-%d')+'.xlsx')
+        data.to_excel('Jobs-' + self.date.strftime('%Y-%m-%d')+'.xlsx')
         print('File exported!')
         
     #method to get search results for dictionary positions and all locations before filtering

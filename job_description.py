@@ -1,3 +1,4 @@
+#modules
 import pandas as pd
 import numpy as np
 import re
@@ -39,6 +40,7 @@ class Description_Features:
         self.description = ' '.join(desc)
         return self.description
     
+    #only keep the descriptions where the immigration tags are being found
     def filter_tags(self, desc):
         check = 0
         for tag in self.immigration_tags:
@@ -50,8 +52,8 @@ class Description_Features:
         #get sentence tokens from semi-cleaned description and filter out ones with no target tags
         self.description = re.sub(r'\.(?! )', '. ', self.description)
         sents = sent_tokenize(self.description)
-        sents = list(filter(self.filter_tags, sents))
-        if len(sents) == 0: sents.append('check company stance')
+        #sents = list(filter(self.filter_tags, sents)) MIGHT UNDO LATER
+        #if len(sents) == 0: sents.append('check company stance')
         self.filtered_desc = ' '.join(sents)
         return self.filtered_desc
     
@@ -62,14 +64,13 @@ class Description_Features:
         self.description = re.sub(r'[^\x00-\x7f]', '', self.description) 
         self.description = re.sub(r'[0-9]{3,}', '', self.description)
         #make sure all words are displayed correctly/no words attached by mistake, remove stopwords
-        desc = self.parsing_description()
+        desc = self.parsing_description().lower()
         no_stopwords = ['for', 'no', 'not', 'only', 'does', 'be', 'doesn\'t']
         stops = [w for w in stopwords.words('english') if w not in no_stopwords]
         self.description = ' '.join([w.lower() for w in desc.split() if w.lower() not in stops])
-        self.description = desc.lower()
         
         #only get sentences with immigration indicator words/phrases (requires sent_tokenization)
-        desc = self.target_description()
+        desc = self.target_description() 
         #remove unwanted/non-context punctuation marks after un-tokenizing sentences
         filters = ''.join([x for x in string.punctuation if x != '#' and x != '+' and x != '-'])
         desc = ''.join([char for char in desc if char not in filters])
