@@ -1,10 +1,8 @@
-Data Scientist
+Junior Data Scientist
 Data Analyst
-Developer
+Data Developer
 Decision Science Analyst
 Business Intelligence Analyst
 Quantitative Analyst
-Analytics Associate
 Software Development Engineer
-Machine Learning Engineer
 Decision Scientist
